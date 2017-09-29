@@ -1,16 +1,16 @@
 # STM32F0xx_driver
 
-##Prerequisites
+## Prerequisites
 stm32f0xx.h file [for low level driver]
 STM32F0xx_StdPeriph_Driver files [for wrapper lib files]
 
-##How To Use?
+## How To Use?
 1. setup project in keil or IAR.
 2. create a group for STM32F0xx_StdPeriph_Driver and add '.c' files.(if using wrapper)
 3. create a group for stm32f0xx_driver and add '.c' files .
 4. include the required files in seperate header file or in the main user app .
 
-##License
+## License
 
 Copyright 2017 Pranav
 
