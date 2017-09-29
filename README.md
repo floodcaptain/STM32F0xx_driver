@@ -5,16 +5,24 @@ stm32f0xx.h file [for low level driver]
 
 STM32F0xx_StdPeriph_Driver files [for wrapper lib files]
 
+## Drivers
+### 1. GPIO
+	
+
+
+## Brief
+
+
+***Status:*** to be tested.
+
+***upcoming:*** gpio wrapper, SPI low level, SPI wrapper
+
+
 ## How To Use?
 1. setup project in keil or IAR.
 2. create a group for STM32F0xx_StdPeriph_Driver and add '.c' files.(if using wrapper)
 3. create a group for stm32f0xx_driver and add '.c' files .
 4. include the required files in seperate header file or in the main user app .
-
-## Brief
-***Status:*** to be tested.
-
-***upcoming:*** gpio wrapper, SPI low level, SPI wrapper
 
 ## License
 
