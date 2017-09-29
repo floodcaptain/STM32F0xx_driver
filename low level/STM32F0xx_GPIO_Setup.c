@@ -9,11 +9,12 @@ _____________________________________________________________________________
  Version		   		: 0.1
  Hardware Used   		:
  Software Aspects       :
- Dependency of        : STM32F0xx_GPIO_Setup.h
+ Dependency of          : STM32F0xx_GPIO_Setup.h
  Microcontroller used	: STM32F0xx
 _____________________________________________________________________________
-
-
+********************************************************************************/
+#include <stdint.h>
+#include "STM32F0xx_GPIO_Setup.h"
 /**
 	* @brief  Initializes the gpio pin 
 	* @param  *GPIOx : GPIO Port Base address
@@ -25,22 +26,20 @@ _____________________________________________________________________________
 	* @retval None
 	*/
 void gpio_init(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, GPIOMode_TypeDef Mode,\
-			   GPIOSpeed_TypeDef Speed,GPIOOType_TypeDef OType, GPIOPuPd_TypeDef PuPd);
+			   GPIOSpeed_TypeDef Speed,GPIOOType_TypeDef OType, GPIOPuPd_TypeDef PuPd)
 {
-	gpio_pin_conf_t GPIO_InitStructure;
-
 	if(GPIOx == GPIOA)
-		RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
+		RCC_GPIOA_CLK_ENABLE();
 	else if(GPIOx == GPIOB)
-		RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
+		RCC_GPIOB_CLK_ENABLE();
 	else if(GPIOx == GPIOC)
-		RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOC, ENABLE);
+		RCC_GPIOC_CLK_ENABLE();
 	else if(GPIOx == GPIOD)
-		RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);
+		RCC_GPIOD_CLK_ENABLE();
 	// else if(GPIOx == GPIOE)
-	// 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOE, ENABLE);
+	// 	RCC_GPIOE_CLK_ENABLE();
 	else if(GPIOx == GPIOF)
-		RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOF, ENABLE);
+		RCC_GPIOB_CLK_ENABLE();
 
 	gpio_configure_pin_mode(GPIOx,GPIO_Pin,Mode);
 	gpio_configure_pin_speed(GPIOx,GPIO_Pin, Speed);
@@ -75,6 +74,8 @@ uint16_t gpio_read_port(GPIO_TypeDef *GPIOx)
 	uint16_t value ;
 
 	value = (GPIOx->IDR)& 0xFFFF;
+	
+	return value;
 }
 
 /**
@@ -99,7 +100,7 @@ void gpio_toggle (GPIO_TypeDef* GPIOx, uint16_t pin_no)
 void gpio_write_bit(GPIO_TypeDef *GPIOx,uint16_t pin_no, uint8_t val)
 {
 	if(val)
-		GPIOx-BSRR |=  (1 << pin_no);
+		GPIOx->BSRR |=  (1 << pin_no);
 	else
 		GPIOx->BSRR &=  ~(1 << (pin_no + 0x10));
 	
@@ -157,7 +158,7 @@ static void gpio_configure_pin_mode(GPIO_TypeDef *GPIOx, uint16_t pin_no, GPIOMo
 	* @param  speed   : value of the speed 
 	* @retval None
 	*/
-static void configure_pin_speed(GPIO_TypeDef *GPIOx, uint16_t pin_no, GPIOSpeed_TypeDef speed)
+static void gpio_configure_pin_speed(GPIO_TypeDef *GPIOx, uint16_t pin_no, GPIOSpeed_TypeDef speed)
 {
 	
 	 GPIOx->OSPEEDR |= (speed << (2 * pin_no));

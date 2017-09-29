@@ -8,7 +8,7 @@ _____________________________________________________________________________
  Version		   		: 0.1
  Hardware Used   		:
  Software Aspects       :
- Dependency of        : STM32F0xx_GPIO_Setup.h
+ Dependency of          : 
  Microcontroller used	: STM32F0xx
  _____________________________________________________________________________
 
@@ -195,6 +195,14 @@ void gpio_enable_interrupt(uint16_t pin_no, IRQn_Type irq_no);
 	* @retval None
 	*/
 void gpio_clear_interrupt(uint16_t pin);
+
+
+static void gpio_configure_pin_mode(GPIO_TypeDef *GPIOx, uint16_t pin_no, GPIOMode_TypeDef mode);
+static void gpio_configure_pin_mode(GPIO_TypeDef *GPIOx, uint16_t pin_no, GPIOMode_TypeDef mode);
+static void gpio_configure_pin_speed(GPIO_TypeDef *GPIOx, uint16_t pin_no, GPIOSpeed_TypeDef speed);
+static void gpio_configure_pin_otype(GPIO_TypeDef *GPIOx, uint16_t pin_no, GPIOOType_TypeDef op_type);
+static void gpio_configure_pin_pupd(GPIO_TypeDef *GPIOx, uint16_t pin_no,GPIOPuPd_TypeDef pupd);
+
 
 
 #endif 
