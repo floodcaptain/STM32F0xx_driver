@@ -1,5 +1,10 @@
 # STM32F0xx_driver
 
+## Brief
+stm32f0xx drivers for GPIO, SPI, UART etc .
+this repo includes source for standalone low level drivers as well as 
+wrapper layer with work on top of StdPeriph_Driver .
+
 ## Prerequisites
 stm32f0xx.h file [for low level driver]
 
