@@ -14,7 +14,7 @@ STM32F0xx_StdPeriph_Driver files [for wrapper lib files]
 ### 1. GPIO
 low level: *to be tested*
 
-wrapper: *to be tested*
+wrapper: [coming up next]
 
 ### ***********	
 ***upcoming:*** gpio wrapper, SPI low level, SPI wrapper
