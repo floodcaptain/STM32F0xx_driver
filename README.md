@@ -11,8 +11,9 @@ STM32F0xx_StdPeriph_Driver files [for wrapper lib files]
 4. include the required files in seperate header file or in the main user app .
 
 ## Brief
-*Status:* to be tested.
-*upcoming:* gpio wrapper, SPI low level, SPI wrapper .S 
+***Status:*** to be tested.
+
+***upcoming:*** gpio wrapper, SPI low level, SPI wrapper
 
 ## License
 
